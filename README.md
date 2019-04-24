@@ -1,0 +1,2 @@
+# Slothify
+Spotify Clone Website

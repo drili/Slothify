@@ -1,0 +1,200 @@
+html,
+body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+}
+
+#background {
+      /*background-color: #000;*/
+      /*background-image: url(../images/musicbg.jpg);*/
+      background: linear-gradient(-180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.95)), url(../images/musicbg.jpg);
+      /*background-position: center;
+      background-size: cover;
+      background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);*/
+      background-size: 170% 170%;
+      -webkit-animation: Gradient 120s ease infinite;
+      -moz-animation: Gradient 120s ease infinite;
+      animation: Gradient 120s ease infinite;
+      display: table;
+      height: 100%;
+      width: 100%;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+#loginContainer * {
+      color: #fff;
+      font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-weight: normal;
+      line-height: 1em;
+      box-sizing: border-box;
+}
+
+#loginContainer {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+      max-width: 1024px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+}
+
+#inputContainer {
+      width: 400px;
+      padding: 45px;
+      float: left;
+      border-right: 2px solid #fff;
+}
+
+#inputContainer h2 {
+      text-align: center;
+}
+
+#inputContainer input[type="text"],
+#inputContainer input[type="email"],
+#inputContainer input[type="password"] {
+      display: block;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid #fff;
+      height: 27px;
+      line-height: 27px;
+      width: 100%;
+}
+
+#inputContainer input:focus {
+      background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: #fff;
+      opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: #fff;
+      opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+      color: #fff;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+      color: #fff;
+}
+
+#inputContainer label {
+      color: #a0a0a0;
+      font-size: 13px;
+      margin-top: 15px;
+      display: block;
+}
+
+#inputContainer button {
+      background-color: transparent;
+      border: 2px solid #fff;
+      border-radius: 250px;
+      color: #fff;
+      display: block;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin: 20px auto;
+      height: 41px;
+      width: 100%;
+}
+
+#inputContainer button:hover {
+      cursor: pointer;
+      background-color: white;
+      color: #000;
+}
+
+.hasAccountText span {
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+}
+
+.hasAccountText {
+      text-align: center;
+}
+
+#registerForm,
+#loginForm {
+      display: none;
+}
+
+#loginText {
+      padding: 45px;
+      display: table-cell;
+}
+
+#loginText h1 {
+      color: #07d159;
+      font-size: 60px;
+      font-weight: bold;
+}
+
+#loginText h2 {
+      margin: 35px 0;
+}
+
+#loginText ul {
+      padding: 0;
+}
+
+#loginText ul li {
+      font-size: 20px;
+      list-style-type: none;
+      padding: 5px 30px;
+      background: url(../images/icons/icons8-checkmark.png) no-repeat 0 0;
+}
+
+#inputContainer .errorMessage {
+      color: #07d159;
+      font-size: 12px;
+      display: block;
+      text-align: center;
+}

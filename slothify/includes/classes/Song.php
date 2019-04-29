@@ -9,6 +9,7 @@
             private $genre;
             private $duration;
             private $path;
+            private $plays;
 
             public function __construct($con, $id) {
                   $this->con = $con;
@@ -23,6 +24,11 @@
                   $this->genre = $this->mysqliData['genre'];
                   $this->duration = $this->mysqliData['duration'];
                   $this->path = $this->mysqliData['path'];
+                  $this->plays = $this->mysqliData['plays'];
+            }
+
+            public function getPlays() {
+                  return $this->plays;
             }
 
             public function getTitle() {

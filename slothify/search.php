@@ -1,67 +1,59 @@
 <?php
       include("includes/includedFiles.php");
 
-      if (isset($_GET['id'])) {
-            $artistId = $_GET['id'];
+      if (isset($_GET['term'])) {
+            $term = urldecode($_GET['term']);
+            // echo $term;
       } else {
-            header("Location: index.php");
+            $term = "";
       }
-
-      $artist = new Artist($con, $artistId);
 ?>
+
+<div class="searchContainer">
+      <h4>Search for an artist, album or song</h4>
+      <input type="text" name="" value="<?php echo $term; ?>" class="searchInput" placeholder="Search..." onfocus="this.selectionStart = this.selectionEnd = this.value.length;">
+</div>
+
+<script type="text/javascript">
+      $(".searchInput").focus();
+
+      $(function() {
+            $(".searchInput").keyup(function() {
+                  clearTimeout(timer);
+                  timer = setTimeout(function() {
+                        var val = $(".searchInput").val();
+                        openPage("search.php?term=" + val);
+                  }, 1200);
+            });
+      });
+</script>
 
 <?php
-      $imageBgQuery = mysqli_query($con, "SELECT artworkPath FROM albums WHERE artist = '$artistId'");
-      while ($row = mysqli_fetch_array($imageBgQuery)) {
-            $imageBgArtist = $row['artworkPath'];
-            // echo $imageBgArtist;
+      if ($term == "") {
+            exit();
       }
 ?>
-<div class="entityInfo borderBottom">
-      <div class="centerSection" style='background-image: url("<?php echo $imageBgArtist; ?>");'>
-            <div class="artistInfo">
-                  <h1 class="artistName"><?php echo $artist->getName(); ?></h1>
-                  <div class="headerButtons">
-                        <button class="button green" type="button" name="button" onclick="playFirstSong()">Play</button>
-                  </div>
-            </div>
-      </div>
-</div>
 
 <div class="trackListContainer borderBottom">
       <h2>POPULAR SONGS</h2>
       <ul class="trackList">
-            <li class='trackListRow trackListRowTop'>
-                  <div class='trackCount'>
-                        <span class='trackNumber'></span>
-                  </div>
-
-                  <div class='trackInfo'>
-                        <span class='trackName'></span>
-                        <span class='artistName'></span>
-                  </div>
-
-                  <div class='trackOptions'>
-                        <span>Options</span>
-                        <!-- <img class='optionsButton' src='assets/images/icons/more.png'> -->
-                  </div>
-
-                  <div class='trackDuration'>
-                        <span class='duration'>Duration</span>
-                  </div>
-
-                  <div class='trackPlays'>
-                        <span class='plays'>Plays</span>
-                  </div>
-            </li>
             <?php
-                  $songIdArray = $artist->getSongIds();
+                  $songsQuery = mysqli_query($con, "SELECT id FROM songs WHERE title LIKE '$term%'");
+
+                  if (mysqli_num_rows($songsQuery) == 0) {
+                        echo "<span class='noResults'>No songs founds matching " . $term . "</span>";
+                  }
+
+                  $songIdArray = array();
                   $i = 1;
-                  foreach ($songIdArray as $songId) {
-                        if ($i > 5) {
-                              break;
-                        }
-                        $albumSong = new Song($con, $songId);
+                  while ($row = mysqli_fetch_array($songsQuery)) {
+                        // if ($i > 15) {
+                        //       break;
+                        // }
+
+                        array_push($songIdArray, $row['id']);
+
+                        $albumSong = new Song($con, $row['id']);
                         $albumArtist = $albumSong->getArtist();
 
                         echo "<li class='trackListRow'>
@@ -100,11 +92,39 @@
       </ul>
 </div>
 
+<div class="artistsContainer borderBottom">
+      <h2>ARTISTS</h2>
+      <?php
+            $artistsQuery = mysqli_query($con, "SELECT id FROM artists WHERE name LIKE '$term%'");
+
+            if (mysqli_num_rows($artistsQuery) == 0) {
+                  echo "<span class='noResults'>No artists founds matching " . $term . "</span>";
+            }
+
+            while ($row = mysqli_fetch_array($artistsQuery)) {
+                  $artistFound = new Artist($con, $row['id']);
+
+                  echo "<div class='searchResultRow'>
+                              <div class='artistName'>
+                                    <span role='link' tabindex='0' onclick='openPage(\"artist.php?id=" . $artistFound->getId() . "\")'>
+                                    "
+                                          . $artistFound->getName() .
+                                    "
+                                    </span>
+                              </div>
+                        </div>";
+            }
+      ?>
+</div>
+
 <div class="gridViewArtist">
       <h2>ALBUMS</h2>
       <div class="gridViewContainer">
             <?php
-                  $albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE artist = '$artistId'");
+                  $albumQuery = mysqli_query($con, "SELECT * FROM albums WHERE title LIKE '$term%'");
+
+
+
                   while ($row = mysqli_fetch_array($albumQuery)) {
                         echo "<div class='gridViewItem'>
                                     <span role='link' tabindex='0' onclick='openPage(\"album.php?id=" . $row['id'] . "\")'>
@@ -117,4 +137,9 @@
                   }
             ?>
       </div>
+      <?php
+      if (mysqli_num_rows($albumQuery) == 0) {
+            echo "<span class='noResults'>No artists founds matching " . $term . "</span>";
+      }
+      ?>
 </div>

@@ -51,7 +51,7 @@
                   } else {
                         timer = setTimeout(function() {
                               openPage("search.php?term=" + val);
-                        }, 800);
+                        }, 400);
                   }
             });
       });

@@ -577,3 +577,39 @@ h1.artistName {
       background-position: right;
       background-size: contain;
 }
+
+.buttonItems .button {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      margin-top: 20px;
+}
+
+.playlistsContainer {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 0;
+}
+
+.playlistsContainer h2 {
+      text-align: center;
+}
+
+.playlistImage {
+      border: 3px solid #282828;
+      padding: 10px;
+      transition: .3s ease;
+}
+
+.gridViewItem .gridViewInfo {
+      margin-top: 10px;
+}
+
+.playlistsContainer .gridViewItem:hover .gridViewInfo {
+      background-color: #282828;
+      transition: .3s ease;
+}
+
+.playlistGridViewContainer2 {
+      margin-top: 40px;
+}

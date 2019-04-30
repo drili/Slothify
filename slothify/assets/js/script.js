@@ -94,3 +94,20 @@ function Audio() {
             this.audio.currentTime = seconds;
       }
 }
+
+function createPlaylist() {
+      var popup = prompt("Please enter the name of your playlist");
+
+      if (popup != "") {
+            $.post("includes/handlers/ajax/createPlaylist.php", { name: popup, username: userLoggedIn }).done(function(error) {
+                  if (error != "") {
+                        alert(error);
+                        return;
+                  }
+                  // Do something when AJAX returns
+                  openPage("yourMusic.php");
+            });
+      } else if (popup == "") {
+            alert("Playlist must contain a name");
+      }
+}

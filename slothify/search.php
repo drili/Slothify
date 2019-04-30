@@ -10,11 +10,12 @@
 ?>
 
 <div class="searchContainer">
-      <h4>Search for an artist, album or song</h4>
-      <input type="text" name="" value="<?php echo $term; ?>" class="searchInput" placeholder="Search..." onfocus="this.selectionStart = this.selectionEnd = this.value.length;">
+      <!-- <h4>Search for an artist, album or song</h4> -->
+      <!-- <input type="text" name="" value="<?php echo $term; ?>" class="searchInput" placeholder="Search..." onfocus="this.selectionStart = this.selectionEnd = this.value.length;"> -->
+      <h2>Searches found for '<?php echo $term; ?>'</h2>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
       $(".searchInput").focus();
 
       $(function() {
@@ -26,7 +27,7 @@
                   }, 1200);
             });
       });
-</script>
+</script> -->
 
 <?php
       if ($term == "") {
@@ -41,7 +42,7 @@
                   $songsQuery = mysqli_query($con, "SELECT id FROM songs WHERE title LIKE '$term%'");
 
                   if (mysqli_num_rows($songsQuery) == 0) {
-                        echo "<span class='noResults'>No songs founds matching " . $term . "</span>";
+                        echo "<span class='noResults'>No songs founds matching '" . $term . "'</span>";
                   }
 
                   $songIdArray = array();
@@ -98,7 +99,7 @@
             $artistsQuery = mysqli_query($con, "SELECT id FROM artists WHERE name LIKE '$term%'");
 
             if (mysqli_num_rows($artistsQuery) == 0) {
-                  echo "<span class='noResults'>No artists founds matching " . $term . "</span>";
+                  echo "<span class='noResults'>No artists founds matching '" . $term . "'</span>";
             }
 
             while ($row = mysqli_fetch_array($artistsQuery)) {
@@ -139,7 +140,7 @@
       </div>
       <?php
       if (mysqli_num_rows($albumQuery) == 0) {
-            echo "<span class='noResults'>No artists founds matching " . $term . "</span>";
+            echo "<span class='noResults'>No artists founds matching '" . $term . "'</span>";
       }
       ?>
 </div>

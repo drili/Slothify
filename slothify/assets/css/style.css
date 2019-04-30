@@ -558,3 +558,22 @@ h1.artistName {
       align-self: flex-start;
       justify-content: flex-start;
 }
+
+.navItem input {
+      background-color: transparent;
+      border: none;
+      padding-left: 10px;
+      padding-right: 10px;
+}
+
+.searchContainer h2 {
+      color: #939393;
+}
+
+.searchInput {
+      width: 95%;
+      background-image: url("../images/icons/search.png");
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: contain;
+}

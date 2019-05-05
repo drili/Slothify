@@ -1,4 +1,5 @@
 <?php
+      include('classes/Playlist.php');
       if (isset($_GET['term'])) {
             $term = urldecode($_GET['term']);
             // echo $term;
@@ -25,15 +26,50 @@
                         <input type="text" name="" value="<?php echo $term; ?>" class="searchInput" placeholder="Search">
                   </div>
             </div>
-            <div class="group">
+
+            <?php
+                  $username = $userLoggedIn->getUsername();
+                  $playlistQuery = mysqli_query($con, "SELECT * FROM playlists WHERE owner = '$username'");
+
+                  if (mysqli_num_rows($playlistQuery) == 0) {
+                        echo "<span class='noResults'>You don't have any playlists yet.</span>";
+                  }
+            ?>
+            <div class="group groupItems">
                   <div class="navItem">
-                        <span role="link" tabindex="0" onclick="openPage('browse.php')" class="navItemLink">Browse</span>
+                        <span role="link" tabindex="0" onclick="openPage('settings.php')" class="navItemLink">
+                              <div class="navItemItems">
+                                    <img src="assets/images/icons/usericon.png" alt="">
+                                    <?php echo $username; ?>
+                              </div>
+                        </span>
                   </div>
-                  <div class="navItem">
-                        <span role="link" tabindex="0" onclick="openPage('yourMusic.php')" class="navItemLink">Your Music</span>
+                  <hr>
+                  <div class="navItem navItem2" role="link" tabindex="0" onclick="openPage('browse.php')">
+                        <span class="navItemLink"></span>
+                        <div class="navItemItems">
+                              <img src="assets/images/icons/browseicon.png" alt="">
+                              Browse
+                        </div>
                   </div>
-                  <div class="navItem">
-                        <span role="link" tabindex="0" onclick="openPage('profile.php')" class="navItemLink"><?php //echo $userLoggedIn; ?>Username</span>
+                  <div class="navItem" role="link" tabindex="0" onclick="openPage('yourMusic.php')">
+                        <span class="navItemLink"></span>
+                        <div class="navItemItems">
+                              <img src="assets/images/icons/playlistlisticon.png" alt="">
+                              Your Music
+                        </div>
+                  </div>
+                  <?php
+                        while ($row = mysqli_fetch_array($playlistQuery)) {
+                              $playlist = new Playlist($con, $row);
+
+                              echo "<div class='navItem navItemPlaylist'>
+                                          <span role='link' tabindex='0' onclick='openPage(\"playlist.php?id=" . $playlist->getId() . "\")' class='navItemLink'>" . $playlist->getName() ."</span>
+                                    </div>";
+                        }
+                  ?>
+                  <div class="navItem navItemPlaylist">
+
                   </div>
             </div>
       </nav>

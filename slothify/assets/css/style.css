@@ -178,6 +178,12 @@ body {
       flex-direction: column;
       -ms-flex-direction: column;
       align-items: center;
+      margin-bottom: 30px;
+}
+
+.navBarLogo span {
+      display: flex;
+      align-items: center;
 }
 
 .logo img {
@@ -605,11 +611,141 @@ h1.artistName {
       margin-top: 10px;
 }
 
-.playlistsContainer .gridViewItem:hover .gridViewInfo {
-      background-color: #282828;
-      transition: .3s ease;
+.playlistsContainer .gridViewItem:hover .playlistImage {
+      border: 3px solid #2ebd59;
 }
 
 .playlistGridViewContainer2 {
       margin-top: 40px;
+}
+
+.navItemPlaylist {
+      padding-top: 0;
+}
+
+.navItemPlaylist span {
+      color: #585858;
+      padding-left: 50px;
+      font-weight: 100;
+}
+
+.navItem img {
+      max-width: 20px;
+      margin-right: 10px;
+}
+
+.navItemItems {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      color: #a0a0a0;
+}
+
+.navItem2 {
+      margin-top: 30px;
+}
+
+.navItemItems:hover{
+      color: #fff;
+}
+
+.playlistNumberOfSongs {
+      margin-top: 50px;
+}
+
+.optionsMenu {
+      position: fixed;
+      background-color: #282828;
+      width: 200px;
+      border: 1px solid rgba(0, 0, 0, .15);
+      border-radius: 3px;
+      z-index: 1000;
+      display: none;
+}
+
+.optionsMenu .item {
+      width: 100%;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      font-weight: 400;
+      color: rgba(147, 147, 147, .8);
+      cursor: pointer;
+      height: 40px;
+      background-color: #282828;
+      font-size: 14px;
+}
+
+.optionsMenu .item:hover {
+      color: #fff;
+      background-color: #333;
+      border-color: #333;
+}
+
+.optionsMenu select {
+      border: none;
+      /* text-indent: 12px; */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+}
+
+.optionsMenu select option {
+      border: none;
+      text-indent: 12px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-left: 20px;
+      background-color: #484848;
+}
+
+.userInfo h1 {
+      text-align: center;
+      margin-bottom: 50px;
+}
+
+.userDetails {
+      padding: 20px;
+}
+
+.userDetails .container h2 {
+      text-align: center;
+}
+
+.userDetails .container input[type="text"],
+.userDetails .container input[type="password"],
+.userDetails .container .button {
+      display: block;
+      margin: 20px auto;
+}
+
+.userDetails .container {
+      width: 60%;
+      margin: 0 auto;
+}
+
+.userDetails .container input {
+      height: 50px;
+      width: 100%;
+      background-color: #1f1f1f;
+      border: none;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 0 20px;
+      transition: .3s ease;
+}
+
+.userDetails .container span {
+      color: #2edb59;
+      font-weight: 300;
+}
+
+.userDetails .container2 h2 {
+      margin-top: 65px;
+}
+
+.userDetails input:focus {
+      border-bottom: 1px solid #2edb59;
+      box-sizing: border-box;
+      background-color: #2f2f2f;
+      transition: .3s ease;
 }

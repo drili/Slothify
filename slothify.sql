@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2019 at 08:41 PM
+-- Generation Time: May 05, 2019 at 11:54 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -101,6 +101,61 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `playlists`
+--
+
+CREATE TABLE `playlists` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `owner` varchar(50) NOT NULL,
+  `dateCreated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlists`
+--
+
+INSERT INTO `playlists` (`id`, `name`, `owner`, `dateCreated`) VALUES
+(6, 'Test', 'DrilonBraha', '2019-04-30 00:00:00'),
+(7, 'New', 'DrilonBraha', '2019-04-30 00:00:00'),
+(16, 'New Discovers', 'DrilonBraha', '2019-05-01 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playlistsongs`
+--
+
+CREATE TABLE `playlistsongs` (
+  `id` int(11) NOT NULL,
+  `songId` int(11) NOT NULL,
+  `playlistId` int(11) NOT NULL,
+  `playlistOrder` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlistsongs`
+--
+
+INSERT INTO `playlistsongs` (`id`, `songId`, `playlistId`, `playlistOrder`) VALUES
+(4, 2, 6, 2),
+(5, 31, 6, 3),
+(6, 6, 7, 0),
+(7, 8, 7, 1),
+(8, 12, 16, 0),
+(9, 27, 16, 1),
+(10, 6, 6, 4),
+(11, 28, 6, 5),
+(12, 14, 6, 6),
+(16, 3, 16, 2),
+(17, 2, 6, 7),
+(18, 23, 16, 3),
+(19, 28, 16, 4),
+(20, 22, 16, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `songs`
 --
 
@@ -121,37 +176,37 @@ CREATE TABLE `songs` (
 --
 
 INSERT INTO `songs` (`id`, `title`, `artist`, `album`, `genre`, `duration`, `path`, `albumOrder`, `plays`) VALUES
-(1, 'Acoustic Breeze', 1, 5, 8, '2:37', 'assets/music/bensound-acousticbreeze.mp3', 1, 20),
-(2, 'A new beginning', 1, 5, 1, '2:35', 'assets/music/bensound-anewbeginning.mp3', 2, 27),
-(3, 'Better Days', 1, 5, 2, '2:33', 'assets/music/bensound-betterdays.mp3', 3, 14),
-(4, 'Buddy', 1, 5, 3, '2:02', 'assets/music/bensound-buddy.mp3', 4, 14),
-(5, 'Clear Day', 1, 5, 4, '1:29', 'assets/music/bensound-clearday.mp3', 5, 9),
-(6, 'Going Higher', 2, 1, 1, '4:04', 'assets/music/bensound-goinghigher.mp3', 1, 9),
+(1, 'Acoustic Breeze', 1, 5, 8, '2:37', 'assets/music/bensound-acousticbreeze.mp3', 1, 25),
+(2, 'A new beginning', 1, 5, 1, '2:35', 'assets/music/bensound-anewbeginning.mp3', 2, 32),
+(3, 'Better Days', 1, 5, 2, '2:33', 'assets/music/bensound-betterdays.mp3', 3, 15),
+(4, 'Buddy', 1, 5, 3, '2:02', 'assets/music/bensound-buddy.mp3', 4, 19),
+(5, 'Clear Day', 1, 5, 4, '1:29', 'assets/music/bensound-clearday.mp3', 5, 11),
+(6, 'Going Higher', 2, 1, 1, '4:04', 'assets/music/bensound-goinghigher.mp3', 1, 12),
 (7, 'Funny Song', 2, 4, 2, '3:07', 'assets/music/bensound-funnysong.mp3', 2, 10),
-(8, 'Funky Element', 2, 1, 3, '3:08', 'assets/music/bensound-funkyelement.mp3', 2, 3),
-(9, 'Extreme Action', 2, 1, 4, '8:03', 'assets/music/bensound-extremeaction.mp3', 3, 4),
-(10, 'Epic', 2, 4, 5, '2:58', 'assets/music/bensound-epic.mp3', 3, 8),
-(11, 'Energy', 2, 1, 6, '2:59', 'assets/music/bensound-energy.mp3', 4, 6),
-(12, 'Dubstep', 2, 1, 7, '2:03', 'assets/music/bensound-dubstep.mp3', 5, 6),
-(13, 'Happiness', 3, 6, 8, '4:21', 'assets/music/bensound-happiness.mp3', 5, 4),
-(14, 'Happy Rock', 3, 6, 9, '1:45', 'assets/music/bensound-happyrock.mp3', 4, 11),
-(15, 'Jazzy Frenchy', 3, 6, 10, '1:44', 'assets/music/bensound-jazzyfrenchy.mp3', 3, 8),
-(16, 'Little Idea', 3, 6, 1, '2:49', 'assets/music/bensound-littleidea.mp3', 2, 7),
-(17, 'Memories', 3, 6, 2, '3:50', 'assets/music/bensound-memories.mp3', 1, 10),
-(18, 'Moose', 4, 7, 1, '2:43', 'assets/music/bensound-moose.mp3', 5, 8),
+(8, 'Funky Element', 2, 1, 3, '3:08', 'assets/music/bensound-funkyelement.mp3', 2, 7),
+(9, 'Extreme Action', 2, 1, 4, '8:03', 'assets/music/bensound-extremeaction.mp3', 3, 5),
+(10, 'Epic', 2, 4, 5, '2:58', 'assets/music/bensound-epic.mp3', 3, 9),
+(11, 'Energy', 2, 1, 6, '2:59', 'assets/music/bensound-energy.mp3', 4, 7),
+(12, 'Dubstep', 2, 1, 7, '2:03', 'assets/music/bensound-dubstep.mp3', 5, 9),
+(13, 'Happiness', 3, 6, 8, '4:21', 'assets/music/bensound-happiness.mp3', 5, 6),
+(14, 'Happy Rock', 3, 6, 9, '1:45', 'assets/music/bensound-happyrock.mp3', 4, 13),
+(15, 'Jazzy Frenchy', 3, 6, 10, '1:44', 'assets/music/bensound-jazzyfrenchy.mp3', 3, 14),
+(16, 'Little Idea', 3, 6, 1, '2:49', 'assets/music/bensound-littleidea.mp3', 2, 15),
+(17, 'Memories', 3, 6, 2, '3:50', 'assets/music/bensound-memories.mp3', 1, 16),
+(18, 'Moose', 4, 7, 1, '2:43', 'assets/music/bensound-moose.mp3', 5, 10),
 (19, 'November', 4, 7, 2, '3:32', 'assets/music/bensound-november.mp3', 4, 6),
-(20, 'Of Elias Dream', 4, 7, 3, '4:58', 'assets/music/bensound-ofeliasdream.mp3', 3, 9),
-(21, 'Pop Dance', 4, 7, 2, '2:42', 'assets/music/bensound-popdance.mp3', 2, 5),
-(22, 'Retro Soul', 4, 7, 5, '3:36', 'assets/music/bensound-retrosoul.mp3', 1, 7),
-(23, 'Sad Day', 5, 2, 1, '2:28', 'assets/music/bensound-sadday.mp3', 1, 12),
-(24, 'Sci-fi', 5, 2, 2, '4:44', 'assets/music/bensound-scifi.mp3', 2, 6),
-(25, 'Slow Motion', 5, 2, 3, '3:26', 'assets/music/bensound-slowmotion.mp3', 3, 10),
-(26, 'Sunny', 5, 2, 4, '2:20', 'assets/music/bensound-sunny.mp3', 4, 9),
-(27, 'Sweet', 5, 2, 5, '5:07', 'assets/music/bensound-sweet.mp3', 5, 17),
-(28, 'Tenderness ', 3, 3, 7, '2:03', 'assets/music/bensound-tenderness.mp3', 4, 13),
+(20, 'Of Elias Dream', 4, 7, 3, '4:58', 'assets/music/bensound-ofeliasdream.mp3', 3, 12),
+(21, 'Pop Dance', 4, 7, 2, '2:42', 'assets/music/bensound-popdance.mp3', 2, 6),
+(22, 'Retro Soul', 4, 7, 5, '3:36', 'assets/music/bensound-retrosoul.mp3', 1, 9),
+(23, 'Sad Day', 5, 2, 1, '2:28', 'assets/music/bensound-sadday.mp3', 1, 13),
+(24, 'Sci-fi', 5, 2, 2, '4:44', 'assets/music/bensound-scifi.mp3', 2, 7),
+(25, 'Slow Motion', 5, 2, 3, '3:26', 'assets/music/bensound-slowmotion.mp3', 3, 12),
+(26, 'Sunny', 5, 2, 4, '2:20', 'assets/music/bensound-sunny.mp3', 4, 12),
+(27, 'Sweet', 5, 2, 5, '5:07', 'assets/music/bensound-sweet.mp3', 5, 19),
+(28, 'Tenderness ', 3, 3, 7, '2:03', 'assets/music/bensound-tenderness.mp3', 4, 15),
 (29, 'The Lounge', 3, 3, 8, '4:16', 'assets/music/bensound-thelounge.mp3 ', 3, 7),
-(30, 'Ukulele', 3, 3, 9, '2:26', 'assets/music/bensound-ukulele.mp3 ', 2, 12),
-(31, 'Tomorrow', 3, 3, 1, '4:54', 'assets/music/bensound-tomorrow.mp3 ', 1, 12);
+(30, 'Ukulele', 3, 3, 9, '2:26', 'assets/music/bensound-ukulele.mp3 ', 2, 15),
+(31, 'Tomorrow', 3, 3, 1, '4:54', 'assets/music/bensound-tomorrow.mp3 ', 1, 16);
 
 -- --------------------------------------------------------
 
@@ -175,7 +230,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `firstName`, `lastName`, `email`, `password`, `signUpDate`, `profilePic`) VALUES
-(1, 'DrilonBraha', 'Drilon', 'Braha', 'Drilib@hotmail.com', '4297f44b13955235245b2497399d7a93', '2019-04-23 00:00:00', 'assets/images/profile-pics/profiletest.jpg'),
+(1, 'DrilonBraha', 'Drilon', 'Braha', 'Drilib4@hotmail.com', '4297f44b13955235245b2497399d7a93', '2019-04-23 00:00:00', 'assets/images/profile-pics/profiletest.jpg'),
 (2, 'Donkey', 'Donkey', 'Kong', 'Donkeykong@yahoo.com', '4297f44b13955235245b2497399d7a93', '2019-04-23 00:00:00', 'assets/images/profile-pics/profiletest.jpg'),
 (3, 'DrilonBraha2', 'Tommy', 'Bobsen', 'Drilib2@hotmail.com', '4297f44b13955235245b2497399d7a93', '2019-04-23 00:00:00', 'assets/images/profile-pics/profiletest.jpg'),
 (4, 'DrilonBraha3', 'Drili', 'Br', 'Aaskdjad@hotmail.com', '4297f44b13955235245b2497399d7a93', '2019-04-24 00:00:00', 'assets/images/profile-pics/profiletest.jpg'),
@@ -206,6 +261,18 @@ ALTER TABLE `artists`
 -- Indexes for table `genres`
 --
 ALTER TABLE `genres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `playlistsongs`
+--
+ALTER TABLE `playlistsongs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -241,6 +308,18 @@ ALTER TABLE `artists`
 --
 ALTER TABLE `genres`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `playlistsongs`
+--
+ALTER TABLE `playlistsongs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `songs`

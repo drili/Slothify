@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2019 at 11:54 PM
+-- Generation Time: Jun 23, 2019 at 04:43 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -101,6 +101,26 @@ INSERT INTO `genres` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ip`
+--
+
+CREATE TABLE `ip` (
+  `address` char(16) COLLATE utf8_bin NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `ip`
+--
+
+INSERT INTO `ip` (`address`, `timestamp`) VALUES
+('::1', '2019-06-21 03:42:49'),
+('::1', '2019-06-21 03:42:52'),
+('::1', '2019-06-21 03:42:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `playlists`
 --
 
@@ -180,9 +200,9 @@ INSERT INTO `songs` (`id`, `title`, `artist`, `album`, `genre`, `duration`, `pat
 (2, 'A new beginning', 1, 5, 1, '2:35', 'assets/music/bensound-anewbeginning.mp3', 2, 32),
 (3, 'Better Days', 1, 5, 2, '2:33', 'assets/music/bensound-betterdays.mp3', 3, 15),
 (4, 'Buddy', 1, 5, 3, '2:02', 'assets/music/bensound-buddy.mp3', 4, 19),
-(5, 'Clear Day', 1, 5, 4, '1:29', 'assets/music/bensound-clearday.mp3', 5, 11),
-(6, 'Going Higher', 2, 1, 1, '4:04', 'assets/music/bensound-goinghigher.mp3', 1, 12),
-(7, 'Funny Song', 2, 4, 2, '3:07', 'assets/music/bensound-funnysong.mp3', 2, 10),
+(5, 'Clear Day', 1, 5, 4, '1:29', 'assets/music/bensound-clearday.mp3', 5, 12),
+(6, 'Going Higher', 2, 1, 1, '4:04', 'assets/music/bensound-goinghigher.mp3', 1, 13),
+(7, 'Funny Song', 2, 4, 2, '3:07', 'assets/music/bensound-funnysong.mp3', 2, 11),
 (8, 'Funky Element', 2, 1, 3, '3:08', 'assets/music/bensound-funkyelement.mp3', 2, 7),
 (9, 'Extreme Action', 2, 1, 4, '8:03', 'assets/music/bensound-extremeaction.mp3', 3, 5),
 (10, 'Epic', 2, 4, 5, '2:58', 'assets/music/bensound-epic.mp3', 3, 9),

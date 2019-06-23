@@ -198,3 +198,7 @@ body {
       display: block;
       text-align: center;
 }
+
+#hideTermsAndPrivacy a {
+      text-decoration: underline;
+}

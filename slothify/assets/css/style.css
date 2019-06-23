@@ -749,3 +749,13 @@ h1.artistName {
       background-color: #2f2f2f;
       transition: .3s ease;
 }
+
+.deleteAcc {
+      margin: 0 auto;
+      text-align: center;
+}
+
+.deleteAcc .button {
+      background-color: red;
+      border: none;
+}

@@ -110,10 +110,17 @@
                                           <input type="password" name="password2" value="" id="password2" required>
                                     </p>
 
+                                    <p>
+                                          <input type="checkbox" id="termsAndService" name="termsandservice" value="" required>
+                                          By signing up, you agree to our Terms and Privacy policy.
+                                    </p>
+
                                     <button type="submit" name="registerButton">Register</button>
 
                                     <div class="hasAccountText" id="">
                                           <span id="hideRegister">Already have an account? Log in here.</span>
+                                          <br>
+                                          <span><a id="hideTermsAndPrivacy">Terms and privacy</a></span>
                                     </div>
                               </form>
                         </div>
